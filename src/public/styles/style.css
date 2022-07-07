@@ -1,0 +1,625 @@
+@font-face {
+    font-family: "Roboto";
+    src: url(../assets/fonts/roboto/Roboto-Thin.ttf) format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(../assets/fonts/roboto/Roboto-Light.ttf) format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(../assets/fonts/roboto/Roboto-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(../assets/fonts/roboto/Roboto-Medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(../assets/fonts/roboto/Roboto-Bold.ttf) format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(../assets/fonts/roboto/Roboto-Black.ttf) format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+:root {
+	/* === RecuEngine Colors === */
+	--primary-color: #24ee71;
+	--primary-color-translucent: #24ee719a;
+
+	/* === BODY === */
+	--body-background-color: #090c0f;
+	--body-color: #1f2630;
+
+	/* === Header === */
+	--header-background-color: #1f2630;
+	--header-color: #e1e1e1;
+
+    /* === LOGIN === */
+	--login-background-color: #1f2630;
+	--login-input-background-color: #090c0f;
+    --login-input-color: #252c36;
+    --login-input-placeholder-color: #1f263075;
+    --login-input-focusVisible-color: #e1e1e1;
+
+	/* === Register === */
+	--navbar-color: #090c0fa6;
+    --navbar-active-color: #24ee71;
+    --navbar-filled-color: #24ee712d;
+    --navbar-filledHover-color: #24ee7157;
+    --navbar-next-color: #24ee719a;
+    
+    /* === ALERT BOX === */
+    --alert-color: var(--primary-color);
+    --alertSuccess-background-color: var(--body-color);
+
+    --alertError-background-color: var(--body-color);
+    --alertError-color: #e11900;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	user-select: none;
+	box-sizing: border-box;
+}
+
+*:link, *:visited {
+    color: inherit;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 1px;
+	background-color: var(--body-background-color);
+	color: #1f2630;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1em 1.5em;
+	width: 100%;
+	height: 70px;
+	color: var(--header-color);
+	background-color: var(--header-background-color);
+}
+
+header > .docTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	font-size: 1.5em;
+	font-weight: 900;
+}
+
+header > .docTitle > span {
+	color: var(--primary-color);
+}
+
+header > .docTitle > .headerTitle {
+    margin-left: 0.5em;
+    font-size: 16px;
+}
+
+header > .user {
+    position: relative;
+    width: max-content;
+    padding: 1em 0;
+    cursor: pointer;
+}
+
+header > .user > .userMenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    cursor: default;
+    box-shadow: 0px 0px 10px #00000026;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 3px 3px 0 0;
+    color: var(--header-color);
+    background-color: var(--header-background-color);
+    z-index: -2;
+    opacity: 0;
+    transform: translateY(0);
+    transition: z-index 0s, opacity 0.1s, transform 0.2s;
+}
+
+header > .user > .userMenu.show {
+    z-index: 1000;
+    opacity: 1;
+    transform: translateY(12px);
+}
+
+header > .user > .userMenu > a {
+    padding: 1em 0.9em;
+}
+
+header.index > a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	padding: 0 .8em;
+	border-radius: 15px;
+	color: var(--body-color);
+	background-color: var(--primary-color-translucent);
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+header.index > a:hover, header.index > a:hover:active {
+	background-color: var(--primary-color);
+}
+
+main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	height: calc(100% - 140px);
+}
+
+main > .title {
+	color: #e1e1e1;
+	font-size: 8em;
+	font-weight: 900;
+}
+
+main > .title > span {
+	color: var(--primary-color);
+}
+
+/* LOGIN SCREEN */
+
+.loginchild {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	justify-content: center;
+}
+
+.loginchild__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	justify-content: space-around;
+    width: 500px;
+	height: 450px;
+    border-radius: 25px;
+    background-color: var(--login-background-color);
+    padding: 2em 1em;
+}
+
+.loginchild__form > h3 {
+	color: var(--primary-color);
+    font-size: 2.1em;
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+.loginchild__form > .inputSignIn__Wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.loginchild input, .loginchild .button {
+    border: 2px solid #0000;
+    border-radius: 10px;
+    background-color: var(--login-input-background-color);
+    color: var(--login-input-color);
+    margin-bottom: 18.2px;
+    width: 100%;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 25px;
+    transition: all .2s;
+}
+
+.loginchild input:not(:placeholder-shown):focus-visible:valid {
+    border-color: var(--primary-color);
+}
+
+.loginchild input:not(:placeholder-shown):focus-visible:invalid {
+    border-color: #ff3f3f;
+}
+
+.loginchild .button {
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 15px;
+    color: var(--body-color);
+    width: 10em;
+    background-color: var(--primary-color);
+    margin: 0;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.loginchild .button.next {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.loginchild .button.submit {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.loginchild input::placeholder {
+    color: var(--login-input-placeholder-color);
+}
+
+.loginchild input:focus-visible {
+    outline: none;
+    border-color: var(--primary-color);
+    color: var(--login-input-focusVisible-color);
+    transition: all 0.3s;
+}
+
+.loginchild .signin__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginchild .authBtns {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+.loginchild .authBtns.center {
+    margin: auto;
+    margin-top: 1em;
+
+}.loginchild .authBtns.center.mb {
+    margin-bottom: 1em;
+}
+
+.loginchild .authBtns a {
+    padding: 0.2em 0 .2em .5em;
+    font-size: .9em;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.loginchild .authBtns a:not(:last-child) {
+    margin-bottom: .2em;
+}
+
+/* LOGIN SCREEN END */
+
+/* REGISTER SITE */
+
+.register {
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+
+.loginchild .CI__input {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 18.2px;
+    width: 100%;
+} 
+
+.loginchild .CI__input input {
+    margin: 0;
+    padding-left: 45px;
+}
+
+.loginchild .CI__input input:placeholder-shown ~ span {
+    color: var(--login-input-placeholder-color);
+}
+
+.loginchild .CI__input input:focus-visible ~ span {
+    color: var(--login-input-focusVisible-color);
+}
+
+.loginchild .CI__input span {
+    color: var(--login-input-color);
+    font-size: 16px;
+    position: absolute;
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: all .2s;
+    padding-left: 25px;
+}
+
+.register > .loginchild > .loginchild__form {
+	position: relative;
+}
+
+.loginchild__form > .formViews {
+    display: flex;
+    position: relative;
+    width: 90%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.loginchild__form > .formViews > div {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    z-index: 1;
+    transition: 0.4s;
+}
+
+.loginchild__form > .formViews > div:not(.form1) {
+    transform: scale(0.8);
+}
+
+.loginchild__form > .formViews > div > .labelForm {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+	color: var(--primary-color);
+    font-size: 1.8em;
+    font-weight: 900;
+    transition: color 0.2s;
+}
+
+.loginchild__form > .formViews > div > .inputWrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginchild__form > .formViews > div > .inputWrapper :last-child {
+    margin-bottom: 0;
+}
+
+.loginchild__form > .formViews > div > .inputWrapper .invalid {
+    border-color: #ff3f3f;
+}
+
+.loginchild__form > .formViews > div.form1 > .labelForm.invalid {
+    color: #ff3f3f;
+}
+
+.loginchild__form > .formViews > div.form1 > .inputWrapper {
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.loginchild__form > .formViews > div.form1 > .inputWrapper > .type {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	opacity: 0.5;
+	transition: all 0.2s;
+}
+
+.loginchild__form > .formViews > div.form1 > .inputWrapper > .type:hover, .loginchild__form > .formViews > div.form1 > .inputWrapper > .type:active {
+	opacity: 1;
+}
+
+.loginchild__form > .formViews > div.form1 > .inputWrapper > .type.active {
+    opacity: 1;
+}
+
+.loginchild__form > .formViews > div.form1 > .inputWrapper > .type > svg {
+	height: 100px;
+	fill: var(--primary-color);
+	margin-bottom: 1em;
+}
+
+.loginchild__form > .formViews > div.form1 > .inputWrapper > .type > span {
+	color: var(--header-color);
+	font-weight: 900;
+	font-size: 1.5em;
+}
+
+.loginchild__form > .formViews > div.hidden {
+    opacity: 0;
+    z-index: 0;
+    transition: z-index 0s 0s, opacity 0.3s 0s, transform 0.35s;
+}
+
+.loginchild__form > .formViews > div.left {
+    transform: translateX(-101%);
+    transition: transform 0.35s cubic-bezier(1, 0, 1, 0.15), z-index 0s 0s, opacity 0.35s 0s;
+}
+
+.loginchild__form > .formViews > div.show {
+    transform: scale(1);
+}
+
+.loginchild__form > .formViews > div.show.left {
+    transform: scale(1) translateX(-101%);
+    transition: transform 0.35s cubic-bezier(1, 0, 1, 0.15), z-index 0s 0s, opacity 0.35s 0s;
+}
+
+.loginchild__form > .form__navbar {
+    display: flex;
+    position: absolute;
+    top: 4%;
+    height: 3px;
+    width: max-content;
+}
+
+.loginchild__form > .form__navbar > .navbar {
+    width: 20px;
+    height: 100%;
+    background-color: var(--navbar-color);
+}
+
+.loginchild__form > .form__navbar > .navbar.filled {
+    cursor: pointer;
+    background-color: var(--navbar-filled-color);
+}
+
+.loginchild__form > .form__navbar > .navbar.filled:hover {
+    background-color: var(--navbar-filledHover-color);
+}
+
+.loginchild__form > .form__navbar > .navbar:not(:last-child) {
+    margin-right: 2px;
+}
+
+.loginchild__form > .form__navbar > .navbar.active {
+    background-color: var(--primary-color);
+}
+
+.loginchild__form > .form__navbar > .navbar.next {
+    cursor: pointer;
+}
+
+.loginchild__form > .form__navbar > .navbar.next:hover {
+    background-color: var(--navbar-next-color);
+}
+
+/* REGISTER SITE END */
+
+/* === AlertBox === */
+
+.alertBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 15vh;
+    right: 5vw;
+    height: 60px;
+    width: max-content;
+    border-radius: 0.5em;
+    overflow: hidden;
+    z-index: 96;
+    background-color: var(--alertSuccess-background-color);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.alertBox.error {
+    background-color: var(--alertError-background-color);
+}
+
+.alertBox.show {
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.alertBox > .alertBox__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.alertBox > .alertBox__container > .alertBox__container--close {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 15px;
+    width: 15px;
+    fill: var(--alert-color);
+}
+
+.alertBox.error > .alertBox__container > .alertBox__container--close {
+    fill: var(--alertError-color);
+}
+
+.alertBox > .alertBox__container > .alertBox__container--message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 1.4em 0 1.2em;
+}
+
+.alertBox > .alertBox__container > .alertBox__container--message > svg {
+    height: 20px;
+    margin-right: 0.5em;
+    fill: var(--alert-color);
+}
+
+.alertBox.error > .alertBox__container > .alertBox__container--message > svg {
+    height: 20px;
+    margin-right: 0.5em;
+    fill: var(--alertError-color);
+}
+
+.alertBox > .alertBox__container > .alertBox__container--message {
+    color: var(--alert-color);
+    font-weight: 500;
+}
+
+.alertBox.error > .alertBox__container > .alertBox__container--message {
+    color: var(--alertError-color);
+}
+
+.alertBox > .alertBox__container > .alertBox__container--timeoutBar {
+    position: absolute;
+    bottom: 0;
+    height: 5px;
+    width: 100%;
+    background-color: #00000052;
+    transform: translateX(0);
+    transition: transform 0s 0.3s;
+}
+
+.alertBox.show > .alertBox__container > .alertBox__container--timeoutBar {
+    transform: translateX(-100%);
+    transition: transform 7s cubic-bezier(0, 0, 0, 0);
+}
+
+/* === AlertBox END === */
+
+main > .background {
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 70px;
+	color: var(--header-color);
+	background-color: var(--header-background-color);
+}
