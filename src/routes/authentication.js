@@ -8,8 +8,8 @@ const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 //GET & POST Routes with Auth
 router.get('/ingresar', isNotLoggedIn, (req, res) => {
     res.render('links/ingresar', {
-        rendererJS: '<script defer type="module" src="/scripts/renderer.js"></script>',
-        styles: 'style',
+        rendererJS: '<script defer type="module" src="/scripts/renderer.min.js"></script>',
+        styles: 'style.min',
         documentTitle: 'RecuEngine - Iniciar Sesión'
     });
 });
@@ -25,8 +25,8 @@ router.post('/ingresar', isNotLoggedIn, (req, res, next) => {
 
 router.get('/registrarse', isNotLoggedIn, (req, res) => {
     res.render('links/registrarse', {
-        rendererJS: '<script defer type="module" src="/scripts/renderer.js"></script>',
-        styles: 'style',
+        rendererJS: '<script defer type="module" src="/scripts/renderer.min.js"></script>',
+        styles: 'style.min',
         documentTitle: 'RecuEngine - Registrarse'
     });
 });

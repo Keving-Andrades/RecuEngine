@@ -130,5 +130,5 @@ dist
 .pnp.*
 
 # PUBLIC FILES WITHOUT MINIFYING
-src/public/scripts/renderer.min.js
-src/public/styles/style.min.css
+src/public/scripts/renderer.js
+src/public/styles/style.css
